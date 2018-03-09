@@ -16,5 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('about', function () {
-    return view('about');
+    $tasks = [
+        'Learn laravel',
+        'lumen'
+    ];
+    return view('about', compact('tasks'));
 });

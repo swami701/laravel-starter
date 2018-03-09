@@ -3,7 +3,18 @@
 <head>
     <title>Laravel</title>
 </head>
-<h1>
-    About us!
-</h1>
+<body>
+    <h1>
+        About us!
+    </h1>
+    <ul>
+        <?php foreach ($tasks as $task): ?>
+            <li> <?= $task ?> </li>
+        <? endforeach; ?>
+        <hr>
+        @foreach ($tasks as $task)
+            <li> {{$task}}</li>
+        @endforeach
+    </ul>
+</body>
 </html>
