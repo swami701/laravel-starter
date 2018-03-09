@@ -22,3 +22,13 @@ Route::get('about', function () {
     ];
     return view('about', compact('tasks'));
 });
+
+Route::get('tasks', function () {
+    $tasks = DB::table('tasks')->latest('id')->get();
+    return view('tasks.list', compact('tasks'));
+});
+
+Route::get('tasks/{id}', function ($id) {
+    $task = DB::table('tasks')->find($id);
+    return view('tasks.show', compact('task'));
+});
