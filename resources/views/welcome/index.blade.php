@@ -49,7 +49,7 @@
                 font-size: 84px;
             }
 
-            .links > a {
+            .yield_content > a {
                 color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;

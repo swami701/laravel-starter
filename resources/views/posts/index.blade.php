@@ -99,11 +99,6 @@
                 </nav>
 
             </div><!-- /.blog-main -->
-
-            <aside class="col-md-4 blog-sidebar">
-            </aside><!-- /.blog-sidebar -->
-
         </div><!-- /.row -->
-
     </main>
 @endsection
