@@ -23,13 +23,6 @@ Route::get('about', function () {
     return view('about', compact('tasks'));
 });
 
-Route::get('tasks', function () {
-    $tasks = \App\Task::all();
-    $iTasks = \App\Task::inComplete()->get();
-    return view('tasks.list', compact('tasks', 'iTasks'));
-});
+Route::get('tasks', 'TasksController@index');
 
-Route::get('tasks/{id}', function ($id) {
-    $task = \App\Task::find($id);
-    return view('tasks.show', compact('task'));
-});
+Route::get('tasks/{id}', 'TasksController@show');
