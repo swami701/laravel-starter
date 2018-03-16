@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome.index');
 });
 
 Route::get('about', function () {
@@ -20,7 +20,7 @@ Route::get('about', function () {
         'Learn laravel',
         'lumen',
     ];
-    return view('about', compact('tasks'));
+    return view('about.index', compact('tasks'));
 });
 
 Route::get('tasks', 'TasksController@index');
