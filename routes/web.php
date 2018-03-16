@@ -18,17 +18,18 @@ Route::get('/', function () {
 Route::get('about', function () {
     $tasks = [
         'Learn laravel',
-        'lumen'
+        'lumen',
     ];
     return view('about', compact('tasks'));
 });
 
 Route::get('tasks', function () {
-    $tasks = DB::table('tasks')->latest('id')->get();
-    return view('tasks.list', compact('tasks'));
+    $tasks = \App\Task::all();
+    $iTasks = \App\Task::inComplete()->get();
+    return view('tasks.list', compact('tasks', 'iTasks'));
 });
 
 Route::get('tasks/{id}', function ($id) {
-    $task = DB::table('tasks')->find($id);
+    $task = \App\Task::find($id);
     return view('tasks.show', compact('task'));
 });
