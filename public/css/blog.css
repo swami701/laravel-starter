@@ -33,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 2;
     height: 2.75rem;
     overflow-y: hidden;
+    background-color: lightblue;
 }
 
 .nav-scroller .nav {
@@ -50,9 +51,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-scroller .nav-link {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
     font-size: .875rem;
+    padding: .75rem;
 }
 
 .card-img-right {

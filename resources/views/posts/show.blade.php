@@ -1,4 +1,5 @@
 @extends('layout.master')
 @section('content')
-    <h1>Show post with id</h1>
+    <h1>{{$post->title}}</h1>
+    <p>{{$post->body}}</p>
 @endsection

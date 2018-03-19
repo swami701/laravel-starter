@@ -8,7 +8,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::latest()->get();
+        return view('posts.index', compact('posts'));
     }
 
     public function create()
@@ -26,8 +27,8 @@ class PostController extends Controller
         return redirect('/posts');
     }
 
-    public function show($post)
+    public function show(Post $post)
     {
-        return view('posts.show');
+        return view('posts.show', compact('post'));
     }
 }
