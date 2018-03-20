@@ -7,28 +7,32 @@
         <ul class="list-group">
             @foreach($post->comments as $comment)
                 <li class="list-group-item">
+                    <p>{{$comment->body}}</p>
                     <strong>
+                        By <a href="#">{{$comment->user->name}}</a>
                         {{ $comment->created_at->diffForHumans() }} &nbsp;
                     </strong>
-                    {{$comment->body}}
                 </li>
             @endforeach
         </ul>
     </div>
     <hr>
-    <div class="card">
-        <form method="POST" action="/posts/{{$post->id}}/comments">
-            {{ csrf_field() }}
-            <div class="form-group">
-                <textarea name="body" placeholder="Your comments here!" class="form-control" required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-            <div class="form-group">
-                @include('layout.errors')
-            </div>
 
-        </form>
-    </div>
+    @if (Auth::check())
+        <div class="card">
+            <form method="POST" action="/posts/{{$post->id}}/comments">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <textarea name="body" placeholder="Your comments here!" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="form-group">
+                    @include('layout.errors')
+                </div>
+
+            </form>
+        </div>
+    @endif
 @endsection
