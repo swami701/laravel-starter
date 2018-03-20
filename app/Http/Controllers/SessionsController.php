@@ -23,7 +23,7 @@ class SessionsController extends Controller
                 'message' => 'Please check your credentials!',
             ]);
         }
-
+        session()->flash('message', 'Welcome back');
         return redirect()->home();
     }
 

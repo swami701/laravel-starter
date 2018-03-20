@@ -20,7 +20,7 @@
 <body>
 
 @include('layout.nav')
-
+@include('layout.session')
 <div class="container">
     <div class="row">
         <div class="col-xl-10">

@@ -30,6 +30,7 @@ class PostsController extends Controller
             'body'  => 'required',
         ]);
         auth()->user()->publish(new Post(request(['title', 'body'])));
+        session()->flash('message', 'Your post is successful!');
         return redirect('/posts');
     }
 
