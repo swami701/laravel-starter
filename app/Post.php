@@ -6,6 +6,16 @@ use Carbon\Carbon;
 
 class Post extends BaseModel
 {
+    public static function archives()
+    {
+        return self::selectRaw('monthname(created_at) month, year(created_at) year, count(*) published')
+            ->groupBy('month', 'year')
+            ->orderByRaw('min(created_at) desc')
+            ->get()
+            ->toArray();
+
+    }
+
     public function addComment($body, $user_id)
     {
         $this->comments()->create(compact(['body', 'user_id']));
