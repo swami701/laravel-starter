@@ -28,6 +28,7 @@ Route::get('tasks', 'TasksController@index');
 Route::get('tasks/{task}', 'TasksController@show');
 
 // Posts
+Route::get('/', 'PostsController@index');
 Route::get('posts', 'PostsController@index');
 Route::get('home', 'PostsController@index')->name('home');
 Route::get('posts/create', 'PostsController@create');

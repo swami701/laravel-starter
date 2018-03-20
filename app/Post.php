@@ -9,7 +9,7 @@ class Post extends BaseModel
     public static function archives()
     {
         return self::selectRaw('monthname(created_at) month, year(created_at) year, count(*) published')
-            ->groupBy('month', 'year')
+            ->groupBy('year', 'month')
             ->orderByRaw('min(created_at) desc')
             ->get()
             ->toArray();
