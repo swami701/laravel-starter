@@ -22,15 +22,7 @@
 @include('layout.nav')
 
 <div class="container">
-    <div class="master-container">
-        <div class="yield_content">
-            @yield('content')
-        </div>
-        <div class="sidebar">
-            @include('layout.aside')
-        </div>
-    </div>
-    <div class="sidebar-clearfix"></div>
+    @yield('content')
 </div>
 
 @include('layout.footer')

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Carbon\Carbon;
+
 class Post extends BaseModel
 {
     public function addComment($body, $user_id)
@@ -17,5 +19,15 @@ class Post extends BaseModel
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeFilter($query, $filters)
+    {
+        if (array_key_exists('month', $filters) && $month = $filters['month']) {
+            $query->whereMonth('created_at', Carbon::parse($month)->month);
+        }
+        if (array_key_exists('year', $filters) && $year = $filters['year']) {
+            $query->whereYear('created_at', $year);
+        }
     }
 }
