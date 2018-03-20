@@ -22,7 +22,14 @@
 @include('layout.nav')
 
 <div class="container">
-    @yield('content')
+    <div class="row">
+        <div class="col-xl-10">
+            @yield('content')
+        </div>
+        <div class="col">
+            @include('layout.aside')
+        </div>
+    </div>
 </div>
 
 @include('layout.footer')
