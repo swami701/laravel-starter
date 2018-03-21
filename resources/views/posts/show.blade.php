@@ -1,6 +1,9 @@
 @extends('layout.master')
 @section('content')
     <h1>{{$post->title}}</h1>
+    @foreach($post->tags as $tag)
+        <a class="bg-light" href="/posts/tags/{{$tag->name}}">{{$tag->name}}</a>
+    @endforeach
     <p>{{$post->body}}</p>
     <hr>
     <div class="comments">

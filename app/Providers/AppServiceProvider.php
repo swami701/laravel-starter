@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('layout.aside', function ($view) {
-            return $view->with('archives', Post::archives());
+            $archives = Post::archives();
+            $tags = Tag::has('posts')->pluck('name');
+            $view->with(compact('archives', 'tags'));
         });
     }
 
