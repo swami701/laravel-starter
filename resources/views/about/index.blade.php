@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Laravel</title>
-</head>
-<body>
+@extends('layout.master')
+@section("content")
     <h1>
         About us!
     </h1>
-</body>
-</html>
+@endsection

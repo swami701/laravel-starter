@@ -31,6 +31,11 @@ class Post extends BaseModel
         return $this->belongsTo(User::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function scopeFilter($query, $filters)
     {
         if (array_key_exists('month', $filters) && $month = $filters['month']) {
