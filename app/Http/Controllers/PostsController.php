@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\RedisMQJob;
 use App\Post;
 use App\Repositories\Posts;
 
@@ -14,6 +15,7 @@ class PostsController extends Controller
 
     public function index(Posts $postsRepo)
     {
+        RedisMQJob::dispatch("A Post list has been visited!!!");
         $posts = $postsRepo->find(request(['month', 'year']));
         return view('posts.index', compact('posts'));
     }
