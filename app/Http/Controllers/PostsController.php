@@ -16,8 +16,8 @@ class PostsController extends Controller
 
     public function index(Posts $postsRepo)
     {
-        RedisMQJob::dispatch("A Post list has been visited!!! - Redis")->onConnection('redis');
-        SQSMQJob::dispatch("A Post list has been visited - SQS!!!")->onConnection('sqs');
+        //RedisMQJob::dispatch("A Post list has been visited!!! - Redis")->onConnection('redis');
+        //SQSMQJob::dispatch("A Post list has been visited - SQS!!!")->onConnection('sqs');
         $posts = $postsRepo->find(request(['month', 'year']));
         return view('posts.index', compact('posts'));
     }
