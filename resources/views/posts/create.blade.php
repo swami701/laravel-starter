@@ -1,5 +1,6 @@
 @extends('layout.master')
 @section('content')
+    <head>{!! NoCaptcha::renderJs() !!}</head>
     <form method="POST" action="/posts">
         {{csrf_field()}}
         <div class="form-group">
@@ -9,6 +10,9 @@
         <div class="form-group">
             <label for="body">Description</label>
             <textarea class="form-control" id="body" name="body" placeholder="Enter description" required></textarea>
+        </div>
+        <div class="form-group">
+            {!! NoCaptcha::display() !!}
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\RedisMQJob;
-use App\Jobs\SQSMQJob;
 use App\Post;
 use App\Repositories\Posts;
 
@@ -16,8 +14,6 @@ class PostsController extends Controller
 
     public function index(Posts $postsRepo)
     {
-        //RedisMQJob::dispatch("A Post list has been visited!!! - Redis")->onConnection('redis');
-        //SQSMQJob::dispatch("A Post list has been visited - SQS!!!")->onConnection('sqs');
         $posts = $postsRepo->find(request(['month', 'year']));
         return view('posts.index', compact('posts'));
     }
@@ -30,8 +26,9 @@ class PostsController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'title' => 'required',
-            'body'  => 'required',
+            'title'                => 'required',
+            'body'                 => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
         auth()->user()->publish(new Post(request(['title', 'body'])));
         session()->flash('message', 'Your post is successful!');
