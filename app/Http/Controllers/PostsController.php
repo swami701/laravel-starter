@@ -14,6 +14,9 @@ class PostsController extends Controller
 
     public function index(Posts $postsRepo)
     {
+        //SQSMQJob::dispatch("SQS hello world");
+        //RedisMQJob::dispatch("Redis hello world");
+        //Queue::push("App\Jobs\RedisMQManualHandler@handle", ['hello' => 'world']);
         $posts = $postsRepo->find(request(['month', 'year']));
         return view('posts.index', compact('posts'));
     }
